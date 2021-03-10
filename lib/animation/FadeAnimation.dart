@@ -32,7 +32,7 @@ class FadeAnimation extends StatelessWidget {
     //   ),
     // );
     return PlayAnimation<double>(
-      tween: (-120.0).tweenTo(0.0),
+      tween: (-140.0).tweenTo(0.0),
       duration: Duration(milliseconds: (400 * delay).round()),
       curve: Curves.easeOut,
       builder: (context, child, value) {

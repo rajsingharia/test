@@ -14,7 +14,7 @@ class _LoginState extends State<Login> {
   String _name = "", _email = "", _password = "";
 
   bool isLoading = false;
-  bool passwordVisibility=false;
+  bool passwordVisibility = false;
 
   @override
   Widget build(BuildContext context) {
@@ -120,14 +120,17 @@ class _LoginState extends State<Login> {
                                   TextField(
                                     obscureText: !passwordVisibility,
                                     decoration: InputDecoration(
-                                      suffixIcon: IconButton(
-                                        icon: Icon(!passwordVisibility?Icons.visibility_off:Icons.visibility),
-                                        onPressed: (){
-                                          setState(() {
-                                            passwordVisibility=!passwordVisibility;
-                                          });
-                                        },
-                                      ),
+                                        suffixIcon: IconButton(
+                                          icon: Icon(!passwordVisibility
+                                              ? Icons.visibility_off
+                                              : Icons.visibility),
+                                          onPressed: () {
+                                            setState(() {
+                                              passwordVisibility =
+                                                  !passwordVisibility;
+                                            });
+                                          },
+                                        ),
                                         prefixIcon: Icon(Icons.lock),
                                         border: OutlineInputBorder(),
                                         labelText: "Password"),
@@ -141,7 +144,8 @@ class _LoginState extends State<Login> {
                               FadeAnimation(
                                   1.4,
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       SizedBox(width: 10),
                                       FlatButton(
@@ -272,10 +276,10 @@ class _LoginState extends State<Login> {
   //Login
   void loginUser(String name, String email, String password) {
     AuthService().login(name, email, password).then((response) {
-      if(response['dio_error']!=null){
+      if (response['dio_error'] != null) {
         showToast(response['dio_error']);
         setState(() => isLoading = false);
-       return;
+        return;
       }
       var token = response.data['token'];
     });
